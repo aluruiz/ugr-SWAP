@@ -59,3 +59,20 @@ Ahora nuestra clave se encuentra en el archivo __~/.ssh/authorized_keys__ de la 
 Podemos comprobar que ahora haciendo `ssh`, desde nuestra maquina 1 a nuestra maquina 2, no se nos pide ninguna contraseña.
 
 ![ssh](./capturas/ssh.PNG)
+
+### Establecer una tarea en cron que se ejecute cada hora.
+
+Por ultimo, vamos a usar `crontab` para administrar la sincronizacion de nuestras maquinas en segundo plano.
+
+Para ello, lo primero que vamos a hacer es editar el archivo __/etc/crontab__ y añadirle la siguiente tarea:
+
+`m *  * * *  paula  rsync -avz -e ssh 192.168.56.100:/var/www/ /var/www/`
+
+_pongo m en los minutos porque para empezar he puesto un * para que se ejecutase cada minuto para ver si funcionaba, y luego lo he cambiado para que ejecute cada hora a los 45, en la captura de pantalla sale que lo ejecuta cada hora._
+
+![Añadir Tarea](./capturas/crontab.PNG)
+
+A continuacion, ejecutamos `sudo service cron restart` para reiniciar el cron y que capte la nueva tarea que hemos añadido. Y a continuacion, para ver que nuestra tarea funciona no desplazamos hasta el archivo __/var/log/syslog/__ donde podemos comprobar que no existe ningun error y que nuestra tarea se ejecuta perfectamente cada hora.
+
+![Crontab_1](./capturas/crontab_funciona.PNG)
+![Crontab_2](./capturas/crontab_funciona_2.PNG)
