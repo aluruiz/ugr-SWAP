@@ -37,3 +37,25 @@ Luego sincronizaremos nuestras maquinas mediante la ejecucion:
 Nos pide la clave de usuario, y tras unos momentos podemos comprobar que el directorio ha sido clonado con exito. Para ello revisamos que en la maquina 2 se encuentre el fichero que creamos anteriormente en la maquina 1.
 
 ![Fichero 2. Rsync](./capturas/rsync_3.PNG)
+
+### Configuración de ssh para acceder sin que solicite contraseña.
+
+Ahora buscamos acceder a la maquina 1 desde la maquina 2 a traves del servicio ssh sin que pidan contraseñas. Para ello vamos a usar una autentificacion con un par de claves publicas y privadas, que podemos obtener mediante la funcion `ssh-keygen` de la siguiente manera:
+
+`ssh-keygen -b 1096 -t rsa`
+
+![Creacion de claves](./capturas/ssh-keygen.PNG)
+
+Dejamos en blanco el hueco que nos pide un lugar donde guardar la clave _Enter file in which to save the key:_ para que se cree por defecto en el directorio __~/.ssh__. Ademas, para el caso de querer conectar equipos sin necesidad de contraseña, tambien tenemos que dejar en blanco el hueco de _passphrase_.
+
+Para copiar la clave de la maquina 2 a la maquina 1 usamos el comando `ssh-copy-id` a continuacion de la id de la maquina destino.
+
+`ssh-copy-id 192.168.56.100`
+
+![Copia de la clave](./capturas/ssh-copy-id.PNG)
+
+Ahora nuestra clave se encuentra en el archivo __~/.ssh/authorized_keys__ de la maquina 1. Si por casualidad se perdiera la clave, volveria pedirnos la contraseña.
+
+Podemos comprobar que ahora haciendo `ssh`, desde nuestra maquina 1 a nuestra maquina 2, no se nos pide ninguna contraseña.
+
+![ssh](./capturas/ssh.PNG)
