@@ -40,4 +40,40 @@ Y ya estaria nuestro balanceador configurado, solo quedaria probarlo en nuestra 
 
 ### _haproxy_ como balanceador de carga.
 
+Igual que en el caso anterior, ahora vamos a configurar el balanceador de carga creado en la maquina virtual __balanceador_haproxy_3__.
+
+![Configuracion Sincronizacion](./capturas/haproxy_sincronizacion.PNG)
+
+Ahora, instalamos el servicio de haproxy, igual que en nginx:
+
+`sudo apt-get install haproxy`
+
+Una vez instalado, nos vamos a la configuracion de haproxy, situada en el archivo _/etc/haproxy/haproxy.cfg_. El cual nos debe quedar de la siguiente forma:
+
+`nano /etc/haproxy/haproxy.cfg`
+
+![Instalacion haproxy](./capturas/haproxy_config.PNG)
+
+Una vez configurado todo, decidimos lanzar el servicio mediante la siguiente orden:
+
+`sudo /usr/sbin/haproxy -f /etc/haproxy/haproxy.cfg`
+
+![Error haproxy](./capturas/haproxy_error.PNG)
+
+Pero, como podemos comprobar, nos dice que tenemos una serie de errores, los cuales tratan de que estamos usando directivas obsoletas.
+
+Por lo que solucionamos los errores, y nos quedarian la siguiente configuracion:
+
+![Instalacion haproxy solucionada](./capturas/haproxy_config_2.PNG)
+
+Y vemos que ya no nos sale ningun error al lanzar el servicio.
+
+![Error haproxy solucionado](./capturas/haproxy_error_sol.PNG)
+
+Por lo que ya solo nos queda comprobar que todo funciona correctamente en nuestra 4º maquina.
+
+`curl 192.168.56.105`
+
+![Balanceo haproxy](./capturas/haproxy_funciona.PNG)
+
 ### someter a la granja web a una alta carga, generada con la herramienta Apache Benchmark.
