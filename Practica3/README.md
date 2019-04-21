@@ -76,4 +76,78 @@ Por lo que ya solo nos queda comprobar que todo funciona correctamente en nuestr
 
 ![Balanceo haproxy](./capturas/haproxy_funciona.PNG)
 
-### someter a la granja web a una alta carga, generada con la herramienta Apache Benchmark.
+### Someter a la granja web a una alta carga, generada con la herramienta Apache Benchmark.
+
+En este apartado sobrecargaremos el servidor balanceado para ver cual es mejor.
+
+Para ello usaremos el comando mostrado a continuacion, el cual envia 1000 peticiones al servidor, concurrentemente de 10 en 10.
+
+`ab -n 1000 -c 10 http://192.168.56.105/index.html`
+
+#### nginx con Round-Robin
+
+Con la configuracion Round-Robin, que tenemos ya implementada nos da los siguientes resultados.
+
+![Htop nginx rr](./capturas/ab_nginx_rr.PNG)
+
+![Htop nginx rr](./capturas/ab_nginx_rr_1.PNG)
+
+![Htop nginx rr](./capturas/ab_nginx_rr_2.PNG)
+
+Y en la maquina 3 nos muestra el resultado del testeo de la carga:
+
+![ab nginx rr](./capturas/ab_nginx_rr_31.PNG)
+![ab nginx rr](./capturas/ab_nginx_rr_32.PNG)
+
+#### nginx con Ponderacion
+
+Ahora modificamos la configuracion para hacerla mediante ponderaciones. En nuestro caso diremos que la maquina 1 recibira el doble de carga que la maquina 2.
+
+![Config ngix ponderaciones](./capturas/nginx_config_pond.PNG)
+
+Los resultados son:
+
+![Htop nginx ponderaciones](./capturas/ab_nginx_pond.PNG)
+
+![Htop nginx ponderaciones](./capturas/ab_nginx_pond_1.PNG)
+
+![Htop nginx ponderaciones](./capturas/ab_nginx_pond_2.PNG)
+
+Y en la maquina 3 nos muestra el resultado del testeo de la carga:
+
+![ab nginx ponderaciones](./capturas/ab_nginx_pond_31.PNG)
+![ab nginx ponderaciones](./capturas/ab_nginx_pond_32.PNG)
+
+#### haproxy con Round-Robin
+
+Con la configuracion Round-Robin, que tenemos ya implementada nos da los siguientes resultados.
+
+![Htop haproxy rr](./capturas/ab_haproxy_rr.PNG)
+
+![Htop haproxy rr](./capturas/ab_haproxy_rr_1.PNG)
+
+![Htop haproxy rr](./capturas/ab_haproxy_rr_2.PNG)
+
+Y en la maquina 3 nos muestra el resultado del testeo de la carga:
+
+![ab haproxy rr](./capturas/ab_haproxy_rr_31.PNG)
+![ab haproxy rr](./capturas/ab_haproxy_rr_32.PNG)
+
+#### haproxy con Ponderacion
+
+Ahora modificamos la configuracion para hacerla mediante ponderaciones. En nuestro caso diremos que la maquina 1 recibira el doble de carga que la maquina 2.
+
+![Config haproxy ponderaciones](./capturas/haproxy_config_pond.PNG)
+
+Los resultados son:
+
+![Htop haproxy ponderaciones](./capturas/ab_haproxy_pond.PNG)
+
+![Htop haproxy ponderaciones](./capturas/ab_haproxy_pond_1.PNG)
+
+![Htop haproxy ponderaciones](./capturas/ab_haproxy_pond_2.PNG)
+
+Y en la maquina 3 nos muestra el resultado del testeo de la carga:
+
+![ab haproxy ponderaciones](./capturas/ab_haproxy_pond_31.PNG)
+![ab haproxy ponderaciones](./capturas/ab_haproxy_pond_32.PNG)
