@@ -52,7 +52,7 @@ __En el balanceador:__
 
 Una vez tenemos la copia de las claves para el certificado, nos dirigimos al directorio _/etc/nginx/conf.d/default.conf_ y lo modificamos para que pueda escuchar tambien el _https_ desde el puerto _443_.
 
-![Config balanceador](./capturas/nginx_configuracion.PNG)
+![Config balanceador](./capturas/nginx-configuracion.PNG)
 
 Y comprobamos que todo funciona mediante la orden:
 
