@@ -88,16 +88,7 @@ Para ello usaremos el comando mostrado a continuación, el cual envía 1000 peti
 
 Con la configuración Round-Robin, que tenemos ya implementada nos da los siguientes resultados.
 
-![Htop nginx rr](./capturas/ab_nginx_rr.PNG)
-
-![Htop nginx rr](./capturas/ab_nginx_rr_1.PNG)
-
-![Htop nginx rr](./capturas/ab_nginx_rr_2.PNG)
-
-Y en la máquina 3 nos muestra el resultado del testeo de la carga:
-
-![ab nginx rr](./capturas/ab_nginx_rr_31.PNG)
-![ab nginx rr](./capturas/ab_nginx_rr_32.PNG)
+![Htop nginx rr](./capturas/nginx_rr.PNG)
 
 #### nginx con Ponderación
 
@@ -107,31 +98,13 @@ Ahora modificamos la configuración para hacerla mediante ponderaciones. En nues
 
 Los resultados son:
 
-![Htop nginx ponderaciones](./capturas/ab_nginx_pond.PNG)
-
-![Htop nginx ponderaciones](./capturas/ab_nginx_pond_1.PNG)
-
-![Htop nginx ponderaciones](./capturas/ab_nginx_pond_2.PNG)
-
-Y en la máquina 3 nos muestra el resultado del testeo de la carga:
-
-![ab nginx ponderaciones](./capturas/ab_nginx_pond_31.PNG)
-![ab nginx ponderaciones](./capturas/ab_nginx_pond_32.PNG)
+![Htop nginx ponderaciones](./capturas/nginx_pond.PNG)
 
 #### haproxy con Round-Robin
 
 Con la configuración Round-Robin, que tenemos ya implementada nos da los siguientes resultados.
 
-![Htop haproxy rr](./capturas/ab_haproxy_rr.PNG)
-
-![Htop haproxy rr](./capturas/ab_haproxy_rr_1.PNG)
-
-![Htop haproxy rr](./capturas/ab_haproxy_rr_2.PNG)
-
-Y en la máquina 3 nos muestra el resultado del testeo de la carga:
-
-![ab haproxy rr](./capturas/ab_haproxy_rr_31.PNG)
-![ab haproxy rr](./capturas/ab_haproxy_rr_32.PNG)
+![Htop haproxy rr](./capturas/haproxy_rr.PNG)
 
 #### haproxy con Ponderación
 
@@ -141,13 +114,4 @@ Ahora modificamos la configuración para hacerla mediante ponderaciones. En nues
 
 Los resultados son:
 
-![Htop haproxy ponderaciones](./capturas/ab_haproxy_pond.PNG)
-
-![Htop haproxy ponderaciones](./capturas/ab_haproxy_pond_1.PNG)
-
-![Htop haproxy ponderaciones](./capturas/ab_haproxy_pond_2.PNG)
-
-Y en la máquina 3 nos muestra el resultado del testeo de la carga:
-
-![ab haproxy ponderaciones](./capturas/ab_haproxy_pond_31.PNG)
-![ab haproxy ponderaciones](./capturas/ab_haproxy_pond_32.PNG)
+![Htop haproxy ponderaciones](./capturas/haproxy_pond.PNG)
