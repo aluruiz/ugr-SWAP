@@ -88,7 +88,7 @@ Para ello usaremos el comando mostrado a continuación, el cual envía 1000 peti
 
 Con la configuración Round-Robin, que tenemos ya implementada nos da los siguientes resultados.
 
-![Htop nginx rr](./capturas/nginx_rr.PNG)
+![Htop nginx rr](./capturas/nginx_rr.png)
 
 #### nginx con Ponderación
 
@@ -98,13 +98,13 @@ Ahora modificamos la configuración para hacerla mediante ponderaciones. En nues
 
 Los resultados son:
 
-![Htop nginx ponderaciones](./capturas/nginx_pond.PNG)
+![Htop nginx ponderaciones](./capturas/nginx_pond.png)
 
 #### haproxy con Round-Robin
 
 Con la configuración Round-Robin, que tenemos ya implementada nos da los siguientes resultados.
 
-![Htop haproxy rr](./capturas/haproxy_rr.PNG)
+![Htop haproxy rr](./capturas/haproxy_rr.png)
 
 #### haproxy con Ponderación
 
@@ -114,4 +114,4 @@ Ahora modificamos la configuración para hacerla mediante ponderaciones. En nues
 
 Los resultados son:
 
-![Htop haproxy ponderaciones](./capturas/haproxy_pond.PNG)
+![Htop haproxy ponderaciones](./capturas/haproxy_pond.png)
