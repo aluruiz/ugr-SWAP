@@ -9,13 +9,13 @@ Crearemos la base de datos _contactos_ con dos valores _nombre_ como un string y
 
 Utilizamos los siguientes comandos:
 
-`mysql> CREATE DATABASE contactos;
-mysql> USE contactos;
-mysql> SHOW TABLES;
-mysql> CREATE TABLE datos(nombre (VARCHAR(100), tlf INT));
-mysql> SHOW TABLES;
-mysql> INSERT INTO datos(nombre, tlf) VALUES ("pepe", 95834987);
-mysql> SELECT * FROM datos;`
+`mysql> CREATE DATABASE contactos;`
+`mysql> USE contactos;`
+`mysql> SHOW TABLES;`
+`mysql> CREATE TABLE datos(nombre (VARCHAR(100), tlf INT));`
+`mysql> SHOW TABLES;`
+`mysql> INSERT INTO datos(nombre, tlf) VALUES ("pepe", 95834987);`
+`mysql> SELECT * FROM datos;`
 
 Y una vez que salimos, para volver a acceder a la base de datos usaremos `USE contactos;` y para mostrarla usaremos `DESCRIBE datos;`.
 
@@ -33,9 +33,9 @@ Tenemos que tener cuidado, ya que los datos de nuestra base de datos pueden esta
 
 A continuación, vamos a realizar la copia y el desbloqueo de la base de datos, dentro nuestra maquina principal, mediante los siguientes comandos:
 
-`mysqldum contactos -u root -p > /tmp/contactos.SQL
-mysql -u root -p
-mysql> UNLOCK TABLES;`
+`mysqldum contactos -u root -p > /tmp/contactos.SQL`
+`mysql -u root -p`
+`mysql> UNLOCK TABLES;`
 
 ![Copia y Desbloqueo](./capturas/copiaDesbloqueo-maestro.PNG)
 
@@ -81,11 +81,11 @@ Y si no nos ha dado ningún error nuestro demonio se habrá iniciado.
 
 A continuación, debemos ir a nuestra maquina _maestro_ y ejecutar las siguientes sentencias para crear un usuario y darle permisos de acceso para la replicación.
 
-`mysql> CREATE USER esclavo IDENTIFIED BY 'esclavo';
-mysql> GRANT REPLICATION SLAVE ON *.* TO 'esclavo'@'%' IDENTIFIED BY 'esclavo';
-mysql> FLUSH PRIVILEGES;
-mysql> FLUSH TABLES;
-mysql> FLUSH TABLES WITH READ LOCK;`
+`mysql> CREATE USER esclavo IDENTIFIED BY 'esclavo';`
+`mysql> GRANT REPLICATION SLAVE ON *.* TO 'esclavo'@'%' IDENTIFIED BY 'esclavo';`
+`mysql> FLUSH PRIVILEGES;`
+`mysql> FLUSH TABLES;`
+`mysql> FLUSH TABLES WITH READ LOCK;`
 
 Y obtenemos los datos de la base de datos que vamos a replicar para usarlos después en la configuración del esclavo:
 
@@ -95,12 +95,12 @@ Y obtenemos los datos de la base de datos que vamos a replicar para usarlos desp
 
 Volvemos a la maquina esclava y le proporcionamos los datos del maestro, para que pueda conectarse, para ello ejecutaremos la siguiente sentencia:
 
-`mysql> CHANGE MASTER TO MASTER_HOST='192.168.31.200',
-MASTER_USER='esclavo',
-MASTER_PASSWORD='esclavo',
-MASTER_LOG_FILE='mysql-bin.000001',
-MASTER_LOG_POS=980,
-MASTER_PORT=3306;`
+`mysql> CHANGE MASTER TO MASTER_HOST='192.168.31.200',`
+`MASTER_USER='esclavo',`
+`MASTER_PASSWORD='esclavo',`
+`MASTER_LOG_FILE='mysql-bin.000001',`
+`MASTER_LOG_POS=980,`
+`MASTER_PORT=3306;`
 
 Y ejecutaremos el esclavo `mysql> START SLAVE;`
 
